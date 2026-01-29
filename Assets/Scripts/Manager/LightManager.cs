@@ -23,6 +23,8 @@ public class LightManager : MonoBehaviour
         if (isNightVision)
         {
             RenderSettings.ambientLight = Color.white;
+            RenderSettings.reflectionIntensity = 1f;
+            RenderSettings.fog = false;
             _globalVolume.profile = _nightVisionProfil;
             foreach (GameObject obj in _ultravioletObjects)
             {
@@ -32,6 +34,8 @@ public class LightManager : MonoBehaviour
         else
         {
             RenderSettings.ambientLight = Color.black;
+            RenderSettings.reflectionIntensity = 0.12f;
+            RenderSettings.fog = true;
             _globalVolume.profile = _ultravioletProfil;
             foreach (GameObject obj in _ultravioletObjects)
             {
