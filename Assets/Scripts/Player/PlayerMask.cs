@@ -9,6 +9,7 @@ public class PlayerMask : MonoBehaviour
     public void Init(PlayerMain main)
     {
         Main = main;
+        _isWearingFirstMask = true;
     }
 
     public void ChangeMask()

@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 
     public UIManager UI;
     public LightManager Light;
+    public SoundManager Sound;
+
+    [Header("Settings")]
+    public float DelayDeath;
 
     private void Awake()
     {
@@ -24,8 +28,23 @@ public class GameManager : MonoBehaviour
 
         if (UI == null) UI = GetComposantFromGameObject<UIManager>.TryGetComposant<UIManager>(gameObject);
         if (Light == null) Light = GetComposantFromGameObject<LightManager>.TryGetComposant<LightManager>(gameObject);
+        if (Sound == null) Sound = GetComposantFromGameObject<SoundManager>.TryGetComposant<SoundManager>(gameObject);
 
         UI.Init(this);
         Light.Init(this);
+        Sound.Init(this);
+    }
+
+    private void Update()
+    {
+        if (DelayDeath > 0f)
+        {
+            DelayDeath -= Time.deltaTime;
+        }
+        else
+        {
+            DelayDeath = 0f;
+            Debug.Log("Délai terminé !");
+        }
     }
 }
