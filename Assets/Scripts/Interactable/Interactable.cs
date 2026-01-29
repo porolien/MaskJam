@@ -18,10 +18,12 @@ public class Interactable : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.Sound.PlaySoundAtPosition(GetComponent<LockableSoundEntity>()?.LockedAudio,transform.position);
                 return;
             }
         }
-        
+
+        GameManager.Instance.Sound.PlaySoundAtPosition(GetComponent<SoundEntity>()?.PrincipaleAudio, transform.position);
     }
 
     public virtual string GetText()

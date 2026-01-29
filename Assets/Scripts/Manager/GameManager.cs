@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public LightManager Light;
     public SoundManager Sound;
 
+    [Header("Settings")]
+    public float DelayDeath;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -30,5 +33,18 @@ public class GameManager : MonoBehaviour
         UI.Init(this);
         Light.Init(this);
         Sound.Init(this);
+    }
+
+    private void Update()
+    {
+        if (DelayDeath > 0f)
+        {
+            DelayDeath -= Time.deltaTime;
+        }
+        else
+        {
+            DelayDeath = 0f;
+            Debug.Log("Délai terminé !");
+        }
     }
 }

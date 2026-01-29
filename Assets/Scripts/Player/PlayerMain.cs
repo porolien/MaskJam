@@ -7,6 +7,7 @@ public class PlayerMain : MonoBehaviour
     public PlayerInteract Interact;
     public PlayerInventory Inventory;
     public PlayerMask Mask;
+    public PlayerSound Sound;
 
     private void Awake()
     {
@@ -15,11 +16,13 @@ public class PlayerMain : MonoBehaviour
         if (Interact == null) Interact = GetComposantFromGameObject<PlayerInteract>.TryGetComposant<PlayerInteract>(gameObject);
         if (Inventory == null) Inventory = GetComposantFromGameObject<PlayerInventory>.TryGetComposant<PlayerInventory>(gameObject);
         if (Mask == null) Mask = GetComposantFromGameObject<PlayerMask>.TryGetComposant<PlayerMask>(gameObject);
+        if (Sound == null) Sound = GetComposantFromGameObject<PlayerSound>.TryGetComposant<PlayerSound>(gameObject);
 
         Movement.Init(this);
         Input.Init(this);
         Interact.Init(this);
         Inventory.Init(this);
         Mask.Init(this);
+        Sound.Init(this);
     }
 }

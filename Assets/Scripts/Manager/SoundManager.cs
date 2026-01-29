@@ -4,7 +4,8 @@ public class SoundManager : MonoBehaviour
 {
     public GameManager Main;
 
-    [SerializeField] private GameObject _prefabSound;
+    [SerializeField] private GameObject _prefabSound2D;
+    [SerializeField] private GameObject _prefabSound3D;
 
     public void Init(GameManager main)
     {
@@ -14,7 +15,18 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundAtPosition(AudioClip clip, Vector3 position, float volume = 1f)
     {
         if (clip == null) return;
-        GameObject soundObject = Instantiate(_prefabSound, position, Quaternion.identity);
+        GameObject soundObject = Instantiate(_prefabSound3D, position, Quaternion.identity);
+        AudioSource audioSource = soundObject.GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.Play();
+        Destroy(soundObject, clip.length);
+    }
+
+    public void PlaySound(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null) return;
+        GameObject soundObject = Instantiate(_prefabSound2D);
         AudioSource audioSource = soundObject.GetComponent<AudioSource>();
         audioSource.clip = clip;
         audioSource.volume = volume;

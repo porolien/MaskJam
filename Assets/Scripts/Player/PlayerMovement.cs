@@ -5,16 +5,18 @@ public class PlayerMovement : MonoBehaviour
     public PlayerMain Main;
     internal Rigidbody rb;
 
-    [Header ("Camera")]
+    [Header("Camera")]
     public Transform VerticalHead;
     private Transform _horizontalPlayer;
     [SerializeField] internal float mouseSensitivity = 2f;
 
-    [Header ("Movement")]
+    [Header("Movement")]
     [SerializeField] internal float _moveSpeed = 5f;
 
     internal float moveHorizontal;
     internal float moveForward;
+
+    private bool _isMoving;
 
     public void Init(PlayerMain main)
     {
@@ -48,6 +50,16 @@ public class PlayerMovement : MonoBehaviour
         if (moveHorizontal == 0 && moveForward == 0)
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            if (_isMoving)
+            {
+                _isMoving = false;
+                Main.Sound.StopFootstep();
+            }
+        }
+        else if (!_isMoving)
+        {
+            _isMoving = true;
+            Main.Sound.PlayFootstep();
         }
     }
 

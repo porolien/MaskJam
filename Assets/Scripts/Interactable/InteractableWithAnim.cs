@@ -12,6 +12,7 @@ public class InteractableWithAnim : Interactable
     public override void GetInteract(PlayerMain player)
     {
         base.GetInteract(player);
+        if (_isLocked) return;
         _animator.SetTrigger("Interact");
     }
 }
