@@ -38,34 +38,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 movement = (transform.right * moveHorizontal + transform.forward * moveForward).normalized;
-        float speed = _moveSpeed;
-        Vector3 targetVelocity = movement * speed;
-        // Apply movement to the Rigidbody
-        Vector3 velocity = rb.linearVelocity;
-        velocity.x = targetVelocity.x;
-        velocity.z = targetVelocity.z;
-
-        rb.linearVelocity = velocity;
-
-        // If we aren't moving and are on the ground, stop velocity so we don't slide
-        if (moveHorizontal == 0 && moveForward == 0)
+        if (!Main.PlayerDesactivate)
         {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-            GameManager.Instance.Cam.HeadBobbingStop();
-            if (_isMoving)
+            Vector3 movement = (transform.right * moveHorizontal + transform.forward * moveForward).normalized;
+            float speed = _moveSpeed;
+            Vector3 targetVelocity = movement * speed;
+            // Apply movement to the Rigidbody
+            Vector3 velocity = rb.linearVelocity;
+            velocity.x = targetVelocity.x;
+            velocity.z = targetVelocity.z;
+
+            rb.linearVelocity = velocity;
+
+            // If we aren't moving and are on the ground, stop velocity so we don't slide
+            if (moveHorizontal == 0 && moveForward == 0)
             {
-                _isMoving = false;
-                Main.Sound.StopFootstep();
+                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+                GameManager.Instance.Cam.HeadBobbingStop();
+                if (_isMoving)
+                {
+                    _isMoving = false;
+                    Main.Sound.StopFootstep();
+                }
             }
-        }
-        else 
-        {
-            GameManager.Instance.Cam.HeadBobbingWalking();
-            if (!_isMoving)
+            else
             {
-                _isMoving = true;
-                Main.Sound.PlayFootstep();
+                GameManager.Instance.Cam.HeadBobbingWalking();
+                if (!_isMoving)
+                {
+                    _isMoving = true;
+                    Main.Sound.PlayFootstep();
+                }
             }
         }
     }
@@ -77,15 +80,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLook(Vector2 look)
     {
-        Vector2 lookValue = look;
+        if (!Main.PlayerDesactivate)
+        {
+            Vector2 lookValue = look;
 
-        float horizontalRotation = lookValue.x * mouseSensitivity;
-        _horizontalPlayer.Rotate(0, horizontalRotation, 0);
+            float horizontalRotation = lookValue.x * mouseSensitivity;
+            _horizontalPlayer.Rotate(0, horizontalRotation, 0);
 
-        float verticalRotation = -lookValue.y * mouseSensitivity;
-        Mathf.Clamp(VerticalHead.rotation.y, -90f, 90f);
-        VerticalHead.Rotate(verticalRotation, 0, 0);
-        VerticalHead.eulerAngles = new Vector3(Mathf.Clamp(-Mathf.DeltaAngle(VerticalHead.eulerAngles.x, 0), -90, 90), transform.eulerAngles.y, transform.eulerAngles.z);
+            float verticalRotation = -lookValue.y * mouseSensitivity;
+            Mathf.Clamp(VerticalHead.rotation.y, -90f, 90f);
+            VerticalHead.Rotate(verticalRotation, 0, 0);
+            VerticalHead.eulerAngles = new Vector3(Mathf.Clamp(-Mathf.DeltaAngle(VerticalHead.eulerAngles.x, 0), -90, 90), transform.eulerAngles.y, transform.eulerAngles.z);
+        }
     }
     #endregion
 
@@ -97,5 +103,13 @@ public class PlayerMovement : MonoBehaviour
     {
         moveHorizontal = movement.x;
         moveForward = movement.z;
+    }
+
+    public void StopPlayer()
+    {
+        rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+        GameManager.Instance.Cam.HeadBobbingStop();
+        Main.Sound.StopFootstep();
+        _isMoving = false;
     }
 }

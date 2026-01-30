@@ -126,6 +126,24 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""0da2bff0-790d-4487-a40c-48728ad0220a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EnterCode"",
+                    ""type"": ""Button"",
+                    ""id"": ""f780d3f4-045e-40d3-82ff-bd5a32d55214"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -216,6 +234,28 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""action"": ""Mask"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6397a9e3-aade-44e6-aa68-e411db78d326"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a27b3a5-6484-477d-b62c-567a8d5f38e7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterCode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +268,8 @@ public partial class @Player: IInputActionCollection2, IDisposable
         m_PlayerAction_Look = m_PlayerAction.FindAction("Look", throwIfNotFound: true);
         m_PlayerAction_Interact = m_PlayerAction.FindAction("Interact", throwIfNotFound: true);
         m_PlayerAction_Mask = m_PlayerAction.FindAction("Mask", throwIfNotFound: true);
+        m_PlayerAction_Escape = m_PlayerAction.FindAction("Escape", throwIfNotFound: true);
+        m_PlayerAction_EnterCode = m_PlayerAction.FindAction("EnterCode", throwIfNotFound: true);
     }
 
     ~@Player()
@@ -312,6 +354,8 @@ public partial class @Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerAction_Look;
     private readonly InputAction m_PlayerAction_Interact;
     private readonly InputAction m_PlayerAction_Mask;
+    private readonly InputAction m_PlayerAction_Escape;
+    private readonly InputAction m_PlayerAction_EnterCode;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerAction".
     /// </summary>
@@ -339,6 +383,14 @@ public partial class @Player: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerAction/Mask".
         /// </summary>
         public InputAction @Mask => m_Wrapper.m_PlayerAction_Mask;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerAction/Escape".
+        /// </summary>
+        public InputAction @Escape => m_Wrapper.m_PlayerAction_Escape;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerAction/EnterCode".
+        /// </summary>
+        public InputAction @EnterCode => m_Wrapper.m_PlayerAction_EnterCode;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -377,6 +429,12 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Mask.started += instance.OnMask;
             @Mask.performed += instance.OnMask;
             @Mask.canceled += instance.OnMask;
+            @Escape.started += instance.OnEscape;
+            @Escape.performed += instance.OnEscape;
+            @Escape.canceled += instance.OnEscape;
+            @EnterCode.started += instance.OnEnterCode;
+            @EnterCode.performed += instance.OnEnterCode;
+            @EnterCode.canceled += instance.OnEnterCode;
         }
 
         /// <summary>
@@ -400,6 +458,12 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Mask.started -= instance.OnMask;
             @Mask.performed -= instance.OnMask;
             @Mask.canceled -= instance.OnMask;
+            @Escape.started -= instance.OnEscape;
+            @Escape.performed -= instance.OnEscape;
+            @Escape.canceled -= instance.OnEscape;
+            @EnterCode.started -= instance.OnEnterCode;
+            @EnterCode.performed -= instance.OnEnterCode;
+            @EnterCode.canceled -= instance.OnEnterCode;
         }
 
         /// <summary>
@@ -468,5 +532,19 @@ public partial class @Player: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMask(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Escape" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEscape(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EnterCode" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEnterCode(InputAction.CallbackContext context);
     }
 }

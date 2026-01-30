@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public LightManager Light;
     public SoundManager Sound;
     public CamManager Cam;
+    public PlayerMain Player;
 
     [Header("Settings")]
     public float DelayDeath;
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
         if (Light == null) Light = GetComposantFromGameObject<LightManager>.TryGetComposant<LightManager>(gameObject);
         if (Sound == null) Sound = GetComposantFromGameObject<SoundManager>.TryGetComposant<SoundManager>(gameObject);
         if (Cam == null) Cam = GetComposantFromGameObject<CamManager>.TryGetComposant<CamManager>(gameObject);
+
+        Player = FindAnyObjectByType<PlayerMain>();  
 
         UI.Init(this);
         Light.Init(this);

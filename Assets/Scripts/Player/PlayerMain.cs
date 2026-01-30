@@ -9,6 +9,9 @@ public class PlayerMain : MonoBehaviour
     public PlayerMask Mask;
     public PlayerSound Sound;
 
+    public bool PlayerDesactivateByUIZoomIn;
+    public bool PlayerDesactivate;
+    
     private void Awake()
     {
         if (Movement == null) Movement = GetComposantFromGameObject<PlayerMovement>.TryGetComposant<PlayerMovement>(gameObject);
@@ -24,5 +27,28 @@ public class PlayerMain : MonoBehaviour
         Inventory.Init(this);
         Mask.Init(this);
         Sound.Init(this);
+    }
+
+    public void DesactivatePlayer(bool fromUIZoomIn)
+    {
+        if (fromUIZoomIn)
+        {
+            PlayerDesactivateByUIZoomIn = true;
+            PlayerDesactivate = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GameManager.Instance.UI.PlayerAim.SetActive(false);
+        }
+
+        Movement.StopPlayer();
+    }
+
+    public void ActivatePlayer()
+    {
+        PlayerDesactivateByUIZoomIn = false;
+        PlayerDesactivate = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        GameManager.Instance.UI.PlayerAim.SetActive(true);
     }
 }

@@ -9,6 +9,8 @@ public class PlayerInputs : MonoBehaviour
     private InputAction _look;
     private InputAction _interact;
     private InputAction _mask;
+    private InputAction _escape;
+    private InputAction _enterCode;
 
     public void Init(PlayerMain main)
     {
@@ -21,6 +23,8 @@ public class PlayerInputs : MonoBehaviour
         _look = _inputActions.PlayerAction.Look;
         _interact = _inputActions.PlayerAction.Interact;
         _mask = _inputActions.PlayerAction.Mask;
+        _escape = _inputActions.PlayerAction.Escape;
+        _enterCode = _inputActions.PlayerAction.EnterCode;
     }
 
     private void OnEnable()
@@ -32,6 +36,8 @@ public class PlayerInputs : MonoBehaviour
         _look.performed += OnLook;
         _interact.performed += OnInteract;
         _mask.performed += OnMask;
+        _escape.performed += OnEscape;
+        _enterCode.performed += OnEnterCode;
     }
 
     private void OnDisable()
@@ -41,6 +47,8 @@ public class PlayerInputs : MonoBehaviour
         _look.performed -= OnLook;
         _interact.performed += OnInteract;
         _mask.performed += OnMask;
+        _escape.performed += OnEscape;
+        _enterCode.performed += OnEnterCode;
 
         _inputActions.PlayerAction.Disable();
     }
@@ -75,5 +83,35 @@ public class PlayerInputs : MonoBehaviour
     private void OnMask(InputAction.CallbackContext context)
     {
         Main.Mask.ChangeMask();
+    }
+
+    /// <summary>
+    /// Input function to pause the game or close zoom in UI
+    /// </summary>
+    /// <param name="context"></param>
+    private void OnEscape(InputAction.CallbackContext context)
+    {
+        //Option ou désactive le zoom in
+        if (Main.PlayerDesactivateByUIZoomIn)
+        {
+            GameManager.Instance.UI.ZoomIn.CloseZoomIn();
+            Main.ActivatePlayer();
+        }
+        else
+        {
+            //Open menu option
+        }
+    }
+
+    /// <summary>
+    /// Input function to enter code in code lock UI
+    /// </summary>
+    /// <param name="context"></param>
+    private void OnEnterCode(InputAction.CallbackContext context)
+    {
+        if (Main.PlayerDesactivateByUIZoomIn)
+        {
+            GameManager.Instance.UI.CodeLock.EnterCode();
+        }
     }
 }
