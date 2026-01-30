@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public UIManager UI;
     public LightManager Light;
     public SoundManager Sound;
+    public CamManager Cam;
 
     [Header("Settings")]
     public float DelayDeath;
@@ -29,10 +30,12 @@ public class GameManager : MonoBehaviour
         if (UI == null) UI = GetComposantFromGameObject<UIManager>.TryGetComposant<UIManager>(gameObject);
         if (Light == null) Light = GetComposantFromGameObject<LightManager>.TryGetComposant<LightManager>(gameObject);
         if (Sound == null) Sound = GetComposantFromGameObject<SoundManager>.TryGetComposant<SoundManager>(gameObject);
+        if (Cam == null) Cam = GetComposantFromGameObject<CamManager>.TryGetComposant<CamManager>(gameObject);
 
         UI.Init(this);
         Light.Init(this);
         Sound.Init(this);
+        Cam.Init(this);
     }
 
     private void Update()

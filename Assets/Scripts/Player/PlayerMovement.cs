@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] internal float _moveSpeed = 5f;
+    [SerializeField] private float _walkingAmplitude;
+    [SerializeField] private float _walkingFrequency;
 
     internal float moveHorizontal;
     internal float moveForward;
@@ -50,16 +52,21 @@ public class PlayerMovement : MonoBehaviour
         if (moveHorizontal == 0 && moveForward == 0)
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            GameManager.Instance.Cam.HeadBobbingStop();
             if (_isMoving)
             {
                 _isMoving = false;
                 Main.Sound.StopFootstep();
             }
         }
-        else if (!_isMoving)
+        else 
         {
-            _isMoving = true;
-            Main.Sound.PlayFootstep();
+            GameManager.Instance.Cam.HeadBobbingWalking();
+            if (!_isMoving)
+            {
+                _isMoving = true;
+                Main.Sound.PlayFootstep();
+            }
         }
     }
 

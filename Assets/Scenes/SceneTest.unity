@@ -832,6 +832,8 @@ MonoBehaviour:
   VerticalHead: {fileID: 1778123199}
   mouseSensitivity: 0.2
   _moveSpeed: 3
+  _walkingAmplitude: 2
+  _walkingFrequency: 2
 --- !u!114 &173144951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3752,6 +3754,7 @@ GameObject:
   - component: {fileID: 1247598134}
   - component: {fileID: 1247598136}
   - component: {fileID: 1247598137}
+  - component: {fileID: 1247598138}
   m_Layer: 0
   m_Name: ---MANAGER---
   m_TagString: Untagged
@@ -3774,6 +3777,7 @@ MonoBehaviour:
   UI: {fileID: 1737767923}
   Light: {fileID: 0}
   Sound: {fileID: 0}
+  Cam: {fileID: 0}
   DelayDeath: 300
 --- !u!4 &1247598135
 Transform:
@@ -3824,6 +3828,22 @@ MonoBehaviour:
   Main: {fileID: 0}
   _prefabSound2D: {fileID: 3758849828362395761, guid: efc2a781a4d62bc4995587aac8fa207a, type: 3}
   _prefabSound3D: {fileID: 3758849828362395761, guid: b7160fe67a131de4c9c2835ed3966d99, type: 3}
+--- !u!114 &1247598138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247598132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b165ee273a31b4d82310e1396169fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Main: {fileID: 0}
+  Cam: {fileID: 224578162}
+  _amplitudeDefault: 0.0225
+  _frequencyDefault: 5
 --- !u!1 &1265599307
 GameObject:
   m_ObjectHideFlags: 0
