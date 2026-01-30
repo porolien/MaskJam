@@ -13,6 +13,17 @@ public class LightManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> _ultravioletObjects = new List<GameObject>();
 
+    [Header("Night Vision Settings")]
+    [SerializeField] private bool _setFogInNightVision = false;
+    [SerializeField] private float _fogDensityInNightVision = 0f;
+    [SerializeField] private float _lightIntensityInNightVision = 1f;
+
+    [Header("Ultraviolet Settings")]
+    [SerializeField] private bool _setFogInUltraviolet = true;
+    [SerializeField] private float _fogDensityInUltraviolet = 0.621f;
+    [SerializeField] private float _lightIntensityInUltraviolet = 0.12f;
+
+
     public void Init(GameManager main)
     {
         Main = main;
@@ -23,8 +34,9 @@ public class LightManager : MonoBehaviour
         if (isNightVision)
         {
             RenderSettings.ambientLight = Color.white;
-            RenderSettings.reflectionIntensity = 1f;
-            RenderSettings.fog = false;
+            RenderSettings.reflectionIntensity = _lightIntensityInNightVision;
+            RenderSettings.fog = _setFogInNightVision;
+            RenderSettings.fogDensity = _fogDensityInNightVision;
             _globalVolume.profile = _nightVisionProfil;
             foreach (GameObject obj in _ultravioletObjects)
             {
@@ -34,8 +46,9 @@ public class LightManager : MonoBehaviour
         else
         {
             RenderSettings.ambientLight = Color.black;
-            RenderSettings.reflectionIntensity = 0.12f;
-            RenderSettings.fog = true;
+            RenderSettings.reflectionIntensity = _lightIntensityInUltraviolet;
+            RenderSettings.fog = _setFogInUltraviolet;
+            RenderSettings.fogDensity = _fogDensityInUltraviolet;
             _globalVolume.profile = _ultravioletProfil;
             foreach (GameObject obj in _ultravioletObjects)
             {
