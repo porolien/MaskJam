@@ -31,15 +31,15 @@ public class PlayerMain : MonoBehaviour
 
     public void DesactivatePlayer(bool fromUIZoomIn)
     {
+        PlayerDesactivate = true;
         if (fromUIZoomIn)
         {
             PlayerDesactivateByUIZoomIn = true;
-            PlayerDesactivate = true;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             GameManager.Instance.UI.PlayerAim.SetActive(false);
         }
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Movement.StopPlayer();
     }
 

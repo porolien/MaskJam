@@ -99,7 +99,7 @@ public class PlayerInputs : MonoBehaviour
         }
         else
         {
-            //Open menu option
+            GameManager.Instance.UI.MenuInGame.ShowMenu();
         }
     }
 

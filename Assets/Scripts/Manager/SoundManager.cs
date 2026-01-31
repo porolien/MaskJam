@@ -7,29 +7,31 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private GameObject _prefabSound2D;
     [SerializeField] private GameObject _prefabSound3D;
 
+    public float GlobalVolume = 1f;
+
     public void Init(GameManager main)
     {
         Main = main;
     }
 
-    public void PlaySoundAtPosition(AudioClip clip, Vector3 position, float volume = 1f)
+    public void PlaySoundAtPosition(AudioClip clip, Vector3 position)
     {
         if (clip == null) return;
         GameObject soundObject = Instantiate(_prefabSound3D, position, Quaternion.identity);
         AudioSource audioSource = soundObject.GetComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = volume;
+        audioSource.volume = GlobalVolume;
         audioSource.Play();
         Destroy(soundObject, clip.length);
     }
 
-    public void PlaySound(AudioClip clip, float volume = 1f)
+    public void PlaySound(AudioClip clip)
     {
         if (clip == null) return;
         GameObject soundObject = Instantiate(_prefabSound2D);
         AudioSource audioSource = soundObject.GetComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = volume;
+        audioSource.volume = GlobalVolume;
         audioSource.Play();
         Destroy(soundObject, clip.length);
     }

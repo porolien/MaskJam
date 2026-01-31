@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public UIInteract Interact;
     public ZoomInUI ZoomIn;
     public UICodeLock CodeLock;
+    public MenuInGameUI MenuInGame;
 
     public GameObject PlayerAim;
 
@@ -17,9 +18,11 @@ public class UIManager : MonoBehaviour
         if (Interact == null) Interact = GetComposantFromGameObject<UIInteract>.TryGetComposant<UIInteract>(gameObject);
         if (ZoomIn == null) ZoomIn = GetComposantFromGameObject<ZoomInUI>.TryGetComposant<ZoomInUI>(gameObject);
         if (CodeLock == null) CodeLock = GetComposantFromGameObject<UICodeLock>.TryGetComposant<UICodeLock>(gameObject);
+        if (MenuInGame == null) MenuInGame = GetComposantFromGameObject<MenuInGameUI>.TryGetComposant<MenuInGameUI>(gameObject);
 
         Interact.Init(this);
         ZoomIn.Init(this);
         CodeLock.Init(this);
+        MenuInGame.Init(this);
     }
 }

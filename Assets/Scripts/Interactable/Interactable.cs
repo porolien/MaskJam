@@ -44,7 +44,13 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        GameManager.Instance.Sound.PlaySoundAtPosition(GetComponent<SoundEntity>()?.PrincipaleAudio, transform.position);
+        if (GetComponent<SoundEntity>())
+        {
+            SoundEntity sound = GetComponent<SoundEntity>();
+            GameManager.Instance.Sound.PlaySoundAtPosition(sound.PrincipaleAudio[sound.CurrentAudioIndex], transform.position);
+            //GameManager.Instance.Sound.PlaySoundAtPosition(GetComponent<SoundEntity>()?.PrincipaleAudio, transform.position);
+            sound.ChangePhaseAudio();
+        }
     }
 
     public virtual string GetText()
