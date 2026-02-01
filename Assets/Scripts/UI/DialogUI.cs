@@ -21,6 +21,7 @@ public class DialogUI : MonoBehaviour
         {
             _dialogText.text = _dialogLines[_currentLineIndex];
             Invoke("NewText", _displayDuration);
+            _currentLineIndex++;
         }
         else
         {
