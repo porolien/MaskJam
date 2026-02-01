@@ -7,11 +7,13 @@ public class DialogUI : MonoBehaviour
     [SerializeField] private List<string> _dialogLines = new List<string>();
     [SerializeField] private float _displayDuration = 5f;
     [SerializeField] private TextMeshProUGUI _dialogText;
+    [SerializeField] private GameObject _dialogObj;
     private int _currentLineIndex = 0;
 
     private void Start()
     {
-        _dialogText.gameObject.SetActive(true);
+        GameManager.Instance.Player.DesactivatePlayer(false);
+        _dialogObj.gameObject.SetActive(true);
         NewText();
     }
 
@@ -25,7 +27,8 @@ public class DialogUI : MonoBehaviour
         }
         else
         {
-            _dialogText.gameObject.SetActive(false);
+            _dialogObj.gameObject.SetActive(false);
+            GameManager.Instance.Player.ActivatePlayer();
         }
     }
 }
