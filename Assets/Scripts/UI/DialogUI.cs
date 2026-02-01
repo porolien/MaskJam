@@ -17,12 +17,20 @@ public class DialogUI : MonoBehaviour
         NewText();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && _currentLineIndex <= _dialogLines.Count - 1)
+        {
+            NewText();
+        }
+    }
+
     private void NewText()
     {
         if (_currentLineIndex <= _dialogLines.Count - 1)
         {
             _dialogText.text = _dialogLines[_currentLineIndex];
-            Invoke("NewText", _displayDuration);
+            //Invoke("NewText", _displayDuration);
             _currentLineIndex++;
         }
         else
