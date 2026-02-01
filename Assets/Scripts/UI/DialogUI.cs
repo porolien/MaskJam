@@ -11,6 +11,7 @@ public class DialogUI : MonoBehaviour
 
     private void Start()
     {
+        _dialogText.gameObject.SetActive(true);
         NewText();
     }
 

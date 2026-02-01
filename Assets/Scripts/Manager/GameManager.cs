@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
         else
         {
             DelayDeath = 0f;
-            Debug.Log("Délai terminé !");
+            UI.EndGameDefeat.gameObject.SetActive(true);
+            UI.EndGameDefeat.StartAnim();
         }
     }
 }
