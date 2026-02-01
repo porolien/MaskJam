@@ -19,7 +19,7 @@ public class DialogUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _currentLineIndex <= _dialogLines.Count - 1)
+        if (Input.GetMouseButtonDown(0) && _currentLineIndex <= _dialogLines.Count)
         {
             NewText();
         }
