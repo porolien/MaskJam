@@ -8997,6 +8997,7 @@ Transform:
   - {fileID: 1982642228}
   - {fileID: 1768282170}
   - {fileID: 2009407085}
+  - {fileID: 1405054134}
   m_Father: {fileID: 1459222424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961236062 stripped
@@ -10575,7 +10576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1114810681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11507,8 +11508,9 @@ MonoBehaviour:
     eventually.
   - "Really sorry that it fell on you, I have faith you will succeed, it\u2019s either
     that or ...  - you have 5 minutes left."
-  _displayDuration: 5
+  _displayDuration: 6
   _dialogText: {fileID: 406685043}
+  _dialogObj: {fileID: 1616917469}
 --- !u!1 &1265995001
 GameObject:
   m_ObjectHideFlags: 0
@@ -13471,7 +13473,7 @@ MonoBehaviour:
   _needEventToChange: 0
   _interactableToChange: {fileID: 0}
   _needObjectToUnlock: 1
-  _objectToUnlock: {fileID: 1114810680}
+  _objectToUnlock: {fileID: 1405054135}
   _textWhenLock: I need a key to open this
   _textWhenUnlock: Press E to open the drawer
 --- !u!64 &1373030461
@@ -13938,6 +13940,159 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.043642852, y: 1.9269345, z: 0.4014021}
   m_Center: {x: 0.20063432, y: 0.96346724, z: 0.19520287}
+--- !u!1001 &1405054133
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 956222918}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.5009
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9359
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.1008
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_Name
+      value: keys
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1405054137}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1405054136}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1405054138}
+  m_SourcePrefab: {fileID: 100100000, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+--- !u!4 &1405054134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+  m_PrefabInstance: {fileID: 1405054133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1405054135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0f5695539327af4418b4c61288697c75, type: 3}
+  m_PrefabInstance: {fileID: 1405054133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1405054136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405054135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c96bf54e201d749a7419d44f3f468c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrincipaleAudio:
+  - {fileID: 8300000, guid: 8c3d91304422b6643a2f0f5738d1856a, type: 3}
+  CurrentAudioIndex: 0
+--- !u!114 &1405054137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405054135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be1ef89eec664a48b1913566b2f4216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isLocked: 0
+  _useAnEvent: 0
+  _onInteractEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _needEventToUnlock: 0
+  _interactableToUnlock: {fileID: 0}
+  _needEventToChange: 0
+  _interactableToChange: {fileID: 0}
+  _needObjectToUnlock: 0
+  _objectToUnlock: {fileID: 0}
+  _textWhenLock: 
+  _textWhenUnlock: Press E to take the key
+--- !u!65 &1405054138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405054135}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.045240477, y: 0.0046685794, z: 0.092014655}
+  m_Center: {x: 0.000000015832484, y: -0.0022526635, z: 0.040914513}
 --- !u!1001 &1412823645
 PrefabInstance:
   m_ObjectHideFlags: 0
