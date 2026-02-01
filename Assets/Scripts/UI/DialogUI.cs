@@ -17,7 +17,7 @@ public class DialogUI : MonoBehaviour
 
     private void NewText()
     {
-        if (_currentLineIndex < _dialogLines.Count - 1)
+        if (_currentLineIndex <= _dialogLines.Count - 1)
         {
             _dialogText.text = _dialogLines[_currentLineIndex];
             Invoke("NewText", _displayDuration);
