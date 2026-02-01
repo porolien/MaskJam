@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
     [SerializeField] protected bool _isLocked;
+    [SerializeField] protected bool _useAnEvent;
+    [SerializeField] protected UnityEvent _onInteractEvent;
 
     [Header("Event Unlocking Settings")]
     [SerializeField] protected bool _needEventToUnlock;
@@ -55,6 +58,11 @@ public class Interactable : MonoBehaviour
             GameManager.Instance.Sound.PlaySoundAtPosition(sound.PrincipaleAudio[sound.CurrentAudioIndex], transform.position);
             //GameManager.Instance.Sound.PlaySoundAtPosition(GetComponent<SoundEntity>()?.PrincipaleAudio, transform.position);
             sound.ChangePhaseAudio();
+        }
+
+        if(_useAnEvent)
+        {
+            _onInteractEvent.Invoke();
         }
     }
 

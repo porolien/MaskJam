@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public ZoomInUI ZoomIn;
     public UICodeLock CodeLock;
     public MenuInGameUI MenuInGame;
+    public EndGameUI EndGameWin;
+    public EndGameUI EndGameDefeat;
 
     public GameObject PlayerAim;
 
