@@ -44,6 +44,11 @@ public class Interactable : MonoBehaviour
             }
         }
 
+        if (_interactableToUnlock)
+        {
+            UnlockInteractable();
+        }
+
         if (GetComponent<SoundEntity>())
         {
             SoundEntity sound = GetComponent<SoundEntity>();
